@@ -1,0 +1,41 @@
+#include<stdio.h>
+main()
+{
+	int n,a[1000],i,j,k,qian,hou,hand,huan;
+	scanf("%d",&n);
+	for(i=0;i<n;i++)
+	{
+		scanf("%d",&a[i]);
+	}
+	j=0;k=n-1;
+	hand=a[j];
+	qian=j+1;
+	hou=k;
+	while(qian!=hou)
+	{
+		while(a[hou]>hand)
+		{
+			if(qian==hou)
+				break;
+			hou--;
+		}
+		
+		while(a[qian]<hand)
+		{
+			if(qian==hou)
+				break;
+			qian++;
+		}
+		if(qian==hou)
+			break;
+		huan=a[hou];
+		a[hou]=a[qian];
+		a[qian]=huan;
+		hou++;
+	}
+	huan=hand;
+	hand=a[qian];
+	a[qian]=huan;
+	for(i=0;i<n;i++)
+		printf("%d  ",a[i]);
+}
